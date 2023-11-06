@@ -70,3 +70,50 @@ $ java -jar bfg.jar --strip-blobs-bigger-than 100M
 $ git repack && git gc
 그리고 push를 하여 주세요.
 
+/////////////////////////////////
+   Git Large File Storage
+/////////////////////////////////
+
+* Local 폴더의 파일 구성은 다음과 같고 3개의 파일을 업로드하는 예이다
+d:/GitHub/tools/
+			|- Git-2.42.0.2-64-bit.exe
+			|- git-lfs-windows-v3.4.0.exe
+			|- SourceTreeSetup-3.4.15.exe
+
+1. LFS 프로그램을 설치한다
+
+  $ brew install git-lfs 또는 
+  $ port install git-lfs
+
+2.해당 레포로 간다(.git 폴더에 들어간다)
+  $ cd /GitHub
+
+3.lfs를 레포당 설치 한번! 
+  $ git lfs install
+
+4.Tracking할 파일확장명 및 폴더를 지정해준다.
+
+  $ git lfs track "*.exe"		//파일 확장자
+
+  $ git lfs track "tools/**"	//폴더명
+
+  본인은 tools 폴더 내 모든 파일을 트래킹하도록 지정했다.
+
+5.그러면 루트 레포에 .gitattributes파일이 생성되고, 파일 내부에 내용이 추가되는 모습을 확인할 수 있다.
+
+  *.exe filter=lfs diff=lfs merge=lfs -text
+  tools/** filter=lfs diff=lfs merge=lfs -textgit 
+
+6.파일 셋팅을 업데이트해준다.
+
+  $ git add .gitattributes 
+
+7.파일을 업로드
+
+  $ git add .
+  
+7.tools에 있는 *.exe 파일을 업로드 한다.
+
+  $ git commit -a "git tools 업로드"
+
+  $ git push origin main

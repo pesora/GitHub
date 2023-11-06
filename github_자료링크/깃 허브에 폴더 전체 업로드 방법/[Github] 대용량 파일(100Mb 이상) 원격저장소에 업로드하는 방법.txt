@@ -1,0 +1,119 @@
+[1] GitHub 원격저장소에 폴더 전체를 업로드 하기
+
+git init
+git lfs install
+git config --global user.email "machimpyo@gmail.com"
+git config --global user.name "pesora"
+git remote add origin https://github.com/pesora/Mastering_MCU1.git
+(안될 경우: git config --global --add safe.directory F:/7.Sunshine/Ademy/3.Mastering_MCU1 ) 
+git status
+(git add README.txt)
+(git commit -m "임베디드 드라이버 강의 소스")
+git add .
+git commit -m "강의 소스와 자료 업로드(stm32f407-disc1)"
+git remote -v
+git push origin main
+(팝업창-Select an account: pesora -> continue)
+
+[2] GitHub 원격저장소에서 로컬 저장소에 내려받기
+
+내려받을 빈 폴더를 만든다
+(주) git초기화를 하지 않고 다음 커맨드를 실행한다
+
+git clone https://github.com/pesora/Udemy.git .
+
+
+////////////////////////////////////
+대용량 파일 전송
+
+$ git lfs install
+$ git lfs track  ".\강의캡처_ppt\*.ppt"
+$ git add .gitattributes
+$ git commit -m "....."
+$ git push origin main
+
+
+//////////////////////////////////// 
+대용량 파일 전송
+
+1. git-lfs 적용
+
+ 
+
+https://git-lfs.github.com/ 이곳에 접속하여 git extension을 받아줍니다.
+
+압축을 풀고 install.sh를 실행합니다.
+
+레포에 가서 git lfs install 을 하여 줍니다.
+
+$ git lfs track "*.zip"
+
+$ git add .
+
+$ git commit -m "Your Message"
+
+% git push origin main
+
+ 
+
+2. BFG Repo-Cleaner 사용
+
+기존에 100MB 이상의 파일을 Commit 한적이 없다면 1번의 방법으로 해결이 되지만 기존에 이력이 있다면 해결이 안된다고 합니다.
+
+$ java -jar bfg.jar --strip-blobs-bigger-than 100M
+이러한 방법으로 100M보다 큰것을 커밋중에서 삭제하여 주는 방법이 있습니다.
+
+ 
+
+혹시라도 진행중에 에러가 발생하게 되면 먼저 이렇게 하여 주어야 한다고 하네요.
+
+$ git repack && git gc
+그리고 push를 하여 주세요.
+
+/////////////////////////////////
+   Git Large File Storage
+/////////////////////////////////
+
+* Local 폴더의 파일 구성은 다음과 같고 3개의 파일을 업로드하는 예이다
+d:/GitHub/tools/
+			|- Git-2.42.0.2-64-bit.exe
+			|- git-lfs-windows-v3.4.0.exe
+			|- SourceTreeSetup-3.4.15.exe
+
+1. LFS 프로그램을 설치한다
+
+  $ brew install git-lfs 또는 
+  $ port install git-lfs
+
+2.해당 레포로 간다(.git 폴더에 들어간다)
+  $ cd /GitHub
+
+3.lfs를 레포당 설치 한번! 
+  $ git lfs install
+
+4.Tracking할 파일확장명 및 폴더를 지정해준다.
+
+  $ git lfs track "*.exe"		//파일 확장자
+
+  $ git lfs track "tools/**"	//폴더명
+
+  본인은 tools 폴더 내 모든 파일을 트래킹하도록 지정했다.
+
+5.그러면 루트 레포에 .gitattributes파일이 생성되고, 파일 내부에 내용이 추가되는 모습을 확인할 수 있다.
+
+  *.exe filter=lfs diff=lfs merge=lfs -text
+  tools/** filter=lfs diff=lfs merge=lfs -textgit 
+
+6.파일 셋팅을 업데이트해준다.
+
+  $ git add .gitattributes 
+
+7.파일을 업로드
+
+  $ git add .
+  
+7.tools에 있는 *.exe 파일을 업로드 한다.
+
+  $ git commit -m "git tools 업로드"
+
+  $ git push origin main
