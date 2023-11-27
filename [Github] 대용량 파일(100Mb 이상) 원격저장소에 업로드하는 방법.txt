@@ -114,6 +114,6 @@ d:/GitHub/tools/
   
 7.tools에 있는 *.exe 파일을 업로드 한다.
 
-  $ git commit -a "git tools 업로드"
+  $ git commit -m "git tools 업로드"
 
   $ git push origin main

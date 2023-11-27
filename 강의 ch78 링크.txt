@@ -1,0 +1,6 @@
+
+78. Input Capture Exercise : Channel Configuration
+링크:https://www.udemy.com/course/microcontroller-programming-stm32-timers-pwm-can-bus-protocol/learn/lecture/11816620#overview
+
+집)
+75. Input Capture Exercise  Channel Configuration
