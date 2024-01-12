@@ -1,26 +1,29 @@
-[1] GitHub 원격저장소에 폴더 전체를 업로드 하기
+pu`pu[1] GitHub 원격저장소에 폴더 전체를 업로드 하기
 
-git init
-git lfs install
-git config --global user.email "machimpyo@gmail.com"
-git config --global user.name "pesora"
-git remote add origin https://github.com/pesora/Mastering_MCU1.git
-(안될 경우: git config --global --add safe.directory F:/7.Sunshine/Ademy/3.Mastering_MCU1 ) 
-git status
-(git add README.txt)
-(git commit -m "임베디드 드라이버 강의 소스")
-git add .
-git commit -m "강의 소스와 자료 업로드(stm32f407-disc1)"
-git remote -v
-git push origin main
-(팝업창-Select an account: pesora -> continue)
+$ git init
+$ git lfs install
+$ git config --global user.email "machimpyo@gmail.com"
+$ git config --global user.name "pesora"
+$ git remote add origin https://github.com/pesora/Mastering_MCU1.git
+  (안될 경우: git config --global --add safe.directory F:/7.Sunshine/Ademy/3.Mastering_MCU1 ) 
+$ git status
+  (git add README.txt)
+  (git commit -m "임베디드 드라이버 강의 소스")
+$ git add .				//현재 폴더에서 업데이트된 것만 더함
+  또는
+$ git add "./apple" 	// 현재 폴더의 하위 폴더인 apple폴더의 모든 파일을 더함
+
+$ git commit -m "강의 소스와 자료 업로드(stm32f407-disc1)"
+$ git remote -v
+$ git push origin main
+  (팝업창-Select an account: pesora -> continue)
 
 [2] GitHub 원격저장소에서 로컬 저장소에 내려받기
 
 내려받을 빈 폴더를 만든다
 (주) git초기화를 하지 않고 다음 커맨드를 실행한다
 
-git clone https://github.com/pesora/Udemy.git .
+$ git clone https://github.com/pesora/Udemy.git .
 
 
 ////////////////////////////////////
@@ -48,7 +51,8 @@ https://git-lfs.github.com/ 이곳에 접속하여 git extension을 받아줍니
 
 $ git lfs track "*.zip"
 
-$ git add .
+$ git add .		//현재 폴더에서 업데이트된 것만 더함
+($ git add "./apple" 	// 현재 폴더의 하위 폴더인 apple폴더의 모든 파일을 더함
 
 $ git commit -m "Your Message"
 
